@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+desktop.ini
+
 # User-specific files
 *.suo
 *.user
@@ -38,6 +40,7 @@ bld/
 TestResult.xml
 *.ncrunchproject
 *.ncrunchsolution
+*.ncrunchsolution.user
 
 # Build Results of an ATL Project
 [Dd]ebugPS/

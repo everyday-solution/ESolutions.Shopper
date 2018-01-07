@@ -1,0 +1,1594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ESolutions.Shopper.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ArticleQAs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialGroupsId" Type="int" Nullable="false" />
+          <Property Name="ArticleNumber" Type="nvarchar(max)" />
+          <Property Name="NameIntern" Type="nvarchar(max)" />
+          <Property Name="NameGerman" Type="nvarchar(max)" />
+          <Property Name="NameEnglish" Type="nvarchar(max)" />
+          <Property Name="DescriptionGerman" Type="nvarchar(max)" />
+          <Property Name="DescriptionEnglish" Type="nvarchar(max)" />
+          <Property Name="PictureName1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PictureName2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PictureName3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Height" Type="float" Nullable="false" />
+          <Property Name="Width" Type="float" Nullable="false" />
+          <Property Name="Depth" Type="float" Nullable="false" />
+          <Property Name="Weight" Type="float" Nullable="false" />
+          <Property Name="SellingPriceWholesaleGross" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="SupplierArticleNumber" Type="nvarchar(max)" />
+          <Property Name="SellingPriceGross" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Unit" Type="int" Nullable="false" />
+          <Property Name="MustSyncStockAmount" Type="bit" Nullable="false" />
+          <Property Name="SyncDate" Type="datetime" />
+          <Property Name="SyncTotal" Type="int" Nullable="false" />
+          <Property Name="SyncEbayAvailiable" Type="int" Nullable="false" />
+          <Property Name="SyncEbayActive" Type="int" Nullable="false" />
+          <Property Name="SyncEbayTemplate" Type="int" Nullable="false" />
+          <Property Name="SyncMagento" Type="int" Nullable="false" />
+          <Property Name="SyncTechnicalInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsInEbay" Type="bit" Nullable="false" />
+          <Property Name="IsInMagento" Type="bit" Nullable="false" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="Tags" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PurchasePrice" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Picture1Guid" Type="uniqueidentifier" />
+          <Property Name="Picture2Guid" Type="uniqueidentifier" />
+          <Property Name="Picture3Guid" Type="uniqueidentifier" />
+          <Property Name="EAN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EbayArticleNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MasterArticleId" Type="int" />
+        </EntityType>
+        <EntityType Name="ArticleSearch">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="450" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticleVehicleAssignments">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="VehicleGuid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsoCodeAlpha2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsoCodeAlpha3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NumericCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsoCode31662" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GermanPostcodes">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Addition" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="InvoiceItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="ArticleNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArticleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TaxRate" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="SinglePriceGross" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="StockNumber" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceStreet2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceStreet1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceCountry" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoicePostcode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceCity" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoicePhone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+          <Property Name="Printed" Type="bit" Nullable="false" />
+          <Property Name="MailingCosts" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="MailingCostsTaxRate" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="UstIdNr" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HideNetPrices" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailingCostCountries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsoCode2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DpdCostsUnto4kg" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="DpdCostsUnto31_5kg" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="HideNetPrices" Type="bit" Nullable="false" />
+          <Property Name="DhlProductCode" Type="int" Nullable="false" />
+          <Property Name="DhlCosts" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="IsoCode3" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailingCostsDpd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdditionalCosts" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mailings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="RecepientName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientStreet2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientStreet1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientCountry" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientPostcode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientCity" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientPhone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailingCostsSender" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="MailingCostsRecepient" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="ShippingMethod" Type="int" Nullable="false" />
+          <Property Name="RecepientEbayName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecepientEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TrackingNumber" Type="nvarchar(max)" />
+          <Property Name="MustSyncTrackingNumber" Type="bit" Nullable="false" />
+          <Property Name="DateOfShipping" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaterialGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EbayAuctionHtmlTemplate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IntroductionGerman" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IntroductionEnglish" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DescriptionGerman" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DescriptionEnglish" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdditionalDescriptionGerman" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdditionalDescriptionEnglish" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MagentoCategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="NumberGenerators">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CurrentNumber" Type="int" Nullable="false" />
+          <Property Name="StepWidth" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ExchangeRate" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="ArrivalDate" Type="datetime" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="FixCostsPercentage" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="ExpectedDateOfDelivery" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PossibleEANs">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EAN" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArticleId" Type="int" />
+        </EntityType>
+        <EntityType Name="SaleItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleId" Type="int" Nullable="false" />
+          <Property Name="EbaySalesRecordNumber" Type="int" Nullable="false" />
+          <Property Name="ExternalArticleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ExternalArticleNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InternalArticleNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="SinglePriceGross" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="CancelDate" Type="datetime" />
+          <Property Name="TaxRate" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="EbayOrderLineItemID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ArticleId" Type="int" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailingId" Type="int" />
+          <Property Name="Source" Type="int" Nullable="false" />
+          <Property Name="EbayName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EMailAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceStreet1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceStreet2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceCity" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceRegion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoicePostcode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceCountry" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateOfPayment" Type="datetime" />
+          <Property Name="DateOfSale" Type="datetime" Nullable="false" />
+          <Property Name="ShippingPrice" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Canceled" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingStreet1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingStreet2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingCity" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingRegion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingPostcode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ShippingCountry" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NameOfBuyer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="IsCashSale" Type="bit" Nullable="false" />
+          <Property Name="ManuallyChanged" Type="bit" Nullable="false" />
+          <Property Name="SourceId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PaidWithPayPal" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockMovements">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SyncerLog">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Series" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ModelName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ModelNumber" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="BuiltFrom" Type="int" Nullable="false" />
+          <Property Name="BuiltUntil" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ArticleQAs_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="ArticleQAs" Type="Self.ArticleQAs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleQAs">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_MasterArticles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="Articles1" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articles1">
+              <PropertyRef Name="MasterArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_MaterialGroups">
+          <End Role="MaterialGroups" Type="Self.MaterialGroups" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="MaterialGroupsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleSearch_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="ArticleSearch" Type="Self.ArticleSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleSearch">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleVehicleAssignments_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="ArticleVehicleAssignments" Type="Self.ArticleVehicleAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleVehicleAssignments">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleVehicleAssignments_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="ArticleVehicleAssignments" Type="Self.ArticleVehicleAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="ArticleVehicleAssignments">
+              <PropertyRef Name="VehicleGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceItems_Invoices">
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="InvoiceItems" Type="Self.InvoiceItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvoiceItems">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PossibleEANs_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="PossibleEANs" Type="Self.PossibleEANs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PossibleEANs">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleItem_Sales">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="1" />
+          <End Role="SaleItems" Type="Self.SaleItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaleItems">
+              <PropertyRef Name="SaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleItems_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+          <End Role="SaleItems" Type="Self.SaleItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaleItems">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Invoices">
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Mailings">
+          <End Role="Mailings" Type="Self.Mailings" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mailings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="MailingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMovements_Articles">
+          <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
+          <End Role="StockMovements" Type="Self.StockMovements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockMovements">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ESolutionsShopperModelsStoreContainer">
+          <EntitySet Name="ArticleQAs" EntityType="Self.ArticleQAs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleSearch" EntityType="Self.ArticleSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleVehicleAssignments" EntityType="Self.ArticleVehicleAssignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GermanPostcodes" EntityType="Self.GermanPostcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceItems" EntityType="Self.InvoiceItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailingCostCountries" EntityType="Self.MailingCostCountries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailingCostsDpd" EntityType="Self.MailingCostsDpd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mailings" EntityType="Self.Mailings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialGroups" EntityType="Self.MaterialGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NumberGenerators" EntityType="Self.NumberGenerators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PossibleEANs" EntityType="Self.PossibleEANs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleItems" EntityType="Self.SaleItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockMovements" EntityType="Self.StockMovements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SyncerLog" EntityType="Self.SyncerLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ArticleQAs_Articles" Association="Self.FK_ArticleQAs_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticleQAs" EntitySet="ArticleQAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_MasterArticles" Association="Self.FK_Articles_MasterArticles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Articles1" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_MaterialGroups" Association="Self.FK_Articles_MaterialGroups">
+            <End Role="MaterialGroups" EntitySet="MaterialGroups" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Suppliers" Association="Self.FK_Articles_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleSearch_Articles" Association="Self.FK_ArticleSearch_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticleSearch" EntitySet="ArticleSearch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleVehicleAssignments_Articles" Association="Self.FK_ArticleVehicleAssignments_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticleVehicleAssignments" EntitySet="ArticleVehicleAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleVehicleAssignments_Vehicles" Association="Self.FK_ArticleVehicleAssignments_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="ArticleVehicleAssignments" EntitySet="ArticleVehicleAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceItems_Invoices" Association="Self.FK_InvoiceItems_Invoices">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="InvoiceItems" EntitySet="InvoiceItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Articles" Association="Self.FK_Orders_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Suppliers" Association="Self.FK_Orders_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PossibleEANs_Articles" Association="Self.FK_PossibleEANs_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="PossibleEANs" EntitySet="PossibleEANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleItem_Sales" Association="Self.FK_SaleItem_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SaleItems" EntitySet="SaleItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleItems_Articles" Association="Self.FK_SaleItems_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="SaleItems" EntitySet="SaleItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Invoices" Association="Self.FK_Sales_Invoices">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Mailings" Association="Self.FK_Sales_Mailings">
+            <End Role="Mailings" EntitySet="Mailings" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMovements_Articles" Association="Self.FK_StockMovements_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="StockMovements" EntitySet="StockMovements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ESolutions.Shopper.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ArticleQA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_ArticleQAs_Articles" FromRole="ArticleQAs" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialGroupsId" Type="Int32" Nullable="false" />
+          <Property Name="ArticleNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameIntern" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameGerman" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionGerman" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PictureName1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PictureName2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PictureName3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Height" Type="Double" Nullable="false" />
+          <Property Name="Width" Type="Double" Nullable="false" />
+          <Property Name="Depth" Type="Double" Nullable="false" />
+          <Property Name="Weight" Type="Double" Nullable="false" />
+          <Property Name="SellingPriceWholesaleGross" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="SupplierArticleNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SellingPriceGross" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Unit" Type="Int32" Nullable="false" />
+          <Property Name="MustSyncStockAmount" Type="Boolean" Nullable="false" />
+          <Property Name="SyncDate" Type="DateTime" Precision="3" />
+          <Property Name="SyncTotal" Type="Int32" Nullable="false" />
+          <Property Name="SyncEbayAvailiable" Type="Int32" Nullable="false" />
+          <Property Name="SyncEbayActive" Type="Int32" Nullable="false" />
+          <Property Name="SyncEbayTemplate" Type="Int32" Nullable="false" />
+          <Property Name="SyncMagento" Type="Int32" Nullable="false" />
+          <Property Name="SyncTechnicalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInEbay" Type="Boolean" Nullable="false" />
+          <Property Name="IsInMagento" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Picture1Guid" Type="Guid" />
+          <Property Name="Picture2Guid" Type="Guid" />
+          <Property Name="Picture3Guid" Type="Guid" />
+          <NavigationProperty Name="ArticleQAs" Relationship="Self.FK_ArticleQAs_Articles" FromRole="Articles" ToRole="ArticleQAs" />
+          <NavigationProperty Name="MaterialGroup" Relationship="Self.FK_Articles_MaterialGroups" FromRole="Articles" ToRole="MaterialGroups" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Articles_Suppliers" FromRole="Articles" ToRole="Suppliers" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Articles" FromRole="Articles" ToRole="Orders" />
+          <NavigationProperty Name="StockMovements" Relationship="Self.FK_StockMovements_Articles" FromRole="Articles" ToRole="StockMovements" />
+          <NavigationProperty Name="SaleItems" Relationship="ESolutions.Shopper.Models.FK_SaleItems_Articles" FromRole="Article" ToRole="SaleItem" />
+          <Property Name="EAN" Type="String" MaxLength="Max" Nullable="false" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PossibleEANs" Relationship="ESolutions.Shopper.Models.FK_PossibleEANs_Articles" FromRole="Article" ToRole="PossibleEAN" />
+          <Property Name="EbayArticleNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ArticleVehicleAssignments" Relationship="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Articles" FromRole="Article" ToRole="ArticleVehicleAssignment" />
+          <Property Name="MasterArticleId" Type="Int32" />
+          <NavigationProperty Name="SubArticles" Relationship="ESolutions.Shopper.Models.FK_Articles_MasterArticles" FromRole="Article" ToRole="Article1" />
+          <NavigationProperty Name="MasterArticle" Relationship="ESolutions.Shopper.Models.FK_Articles_MasterArticles" FromRole="Article1" ToRole="Article" />
+          <NavigationProperty Name="ArticleSearches" Relationship="ESolutions.Shopper.Models.FK_ArticleSearch_Articles" FromRole="Article" ToRole="ArticleSearch" />
+        </EntityType>
+        <EntityType Name="GermanPostcode">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Addition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Postcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceStreet2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceStreet1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoicePostcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoicePhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Printed" Type="Boolean" Nullable="false" />
+          <Property Name="MailingCosts" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="MailingCostsTaxRate" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="UstIdNr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HideNetPrices" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Invoices" FromRole="Invoices" ToRole="Sales" />
+          <NavigationProperty Name="InvoiceItems" Relationship="ESolutions.Shopper.Models.FK_InvoiceItems_Invoices" FromRole="Invoice" ToRole="InvoiceItem" />
+        </EntityType>
+        <EntityType Name="MailingCostsDpd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdditionalCosts" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EbayAuctionHtmlTemplate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IntroductionGerman" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IntroductionEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionGerman" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdditionalDescriptionGerman" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdditionalDescriptionEnglish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MagentoCategoryId" Type="Int32" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_MaterialGroups" FromRole="MaterialGroups" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="NumberGenerator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentNumber" Type="Int32" Nullable="false" />
+          <Property Name="StepWidth" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="FixCostsPercentage" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Orders_Articles" FromRole="Orders" ToRole="Articles" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Orders_Suppliers" FromRole="Orders" ToRole="Suppliers" />
+          <Property Name="ExpectedDateOfDelivery" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SaleItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" />
+          <Property Name="EbaySalesRecordNumber" Type="Int32" Nullable="false" />
+          <Property Name="ExternalArticleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExternalArticleNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InternalArticleNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="SinglePriceGross" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="CancelDate" Type="DateTime" Precision="3" />
+          <Property Name="TaxRate" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="EbayOrderLineItemID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK_SaleItem_Sales" FromRole="SaleItems" ToRole="Sales" />
+          <Property Name="ArticleId" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="ESolutions.Shopper.Models.FK_SaleItems_Articles" FromRole="SaleItem" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailingId" Type="Int32" />
+          <Property Name="Source" Type="ESolutions.Shopper.Models.SaleSources" Nullable="false" />
+          <Property Name="EbayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceStreet1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceStreet2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceRegion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoicePostcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfPayment" Type="DateTime" Precision="3" />
+          <Property Name="DateOfSale" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShippingPrice" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Canceled" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingStreet1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingStreet2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingRegion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingPostcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShippingCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameOfBuyer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <Property Name="IsCashSale" Type="Boolean" Nullable="false" />
+          <Property Name="ManuallyChanged" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_Sales_Invoices" FromRole="Sales" ToRole="Invoices" />
+          <NavigationProperty Name="SaleItems" Relationship="Self.FK_SaleItem_Sales" FromRole="Sales" ToRole="SaleItems" />
+          <NavigationProperty Name="Mailing" Relationship="ESolutions.Shopper.Models.FK_Sales_Mailings" FromRole="Sale" ToRole="Mailing" />
+          <Property Name="SourceId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaidWithPayPal" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockMovement">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="25" Scale="9" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_StockMovements_Articles" FromRole="StockMovements" ToRole="Articles" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Suppliers" FromRole="Suppliers" ToRole="Articles" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Suppliers" FromRole="Suppliers" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK_ArticleQAs_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleQAs" Type="Self.ArticleQA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleQAs">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_MaterialGroups">
+          <End Role="MaterialGroups" Type="Self.MaterialGroup" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="MaterialGroupsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_Suppliers">
+          <End Role="Suppliers" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articles">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMovements_Articles">
+          <End Role="Articles" Type="Self.Article" Multiplicity="1" />
+          <End Role="StockMovements" Type="Self.StockMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockMovements">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Invoices">
+          <End Role="Invoices" Type="Self.Invoice" Multiplicity="0..1" />
+          <End Role="Sales" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Suppliers">
+          <End Role="Suppliers" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleItem_Sales">
+          <End Role="Sales" Type="Self.Sale" Multiplicity="1" />
+          <End Role="SaleItems" Type="Self.SaleItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaleItems">
+              <PropertyRef Name="SaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyDataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ArticleQAs" EntityType="Self.ArticleQA" />
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="GermanPostcodes" EntityType="Self.GermanPostcode" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="MailingCostsDpds" EntityType="Self.MailingCostsDpd" />
+          <EntitySet Name="MaterialGroups" EntityType="Self.MaterialGroup" />
+          <EntitySet Name="NumberGenerators" EntityType="Self.NumberGenerator" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="SaleItems" EntityType="Self.SaleItem" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="StockMovements" EntityType="Self.StockMovement" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <AssociationSet Name="FK_ArticleQAs_Articles" Association="Self.FK_ArticleQAs_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="ArticleQAs" EntitySet="ArticleQAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_MaterialGroups" Association="Self.FK_Articles_MaterialGroups">
+            <End Role="MaterialGroups" EntitySet="MaterialGroups" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Suppliers" Association="Self.FK_Articles_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Articles" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Articles" Association="Self.FK_Orders_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMovements_Articles" Association="Self.FK_StockMovements_Articles">
+            <End Role="Articles" EntitySet="Articles" />
+            <End Role="StockMovements" EntitySet="StockMovements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Invoices" Association="Self.FK_Sales_Invoices">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Suppliers" Association="Self.FK_Orders_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleItem_Sales" Association="Self.FK_SaleItem_Sales">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SaleItems" EntitySet="SaleItems" />
+          </AssociationSet>
+          <EntitySet Name="InvoiceItems" EntityType="ESolutions.Shopper.Models.InvoiceItem" />
+          <AssociationSet Name="FK_InvoiceItems_Invoices" Association="ESolutions.Shopper.Models.FK_InvoiceItems_Invoices">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="InvoiceItem" EntitySet="InvoiceItems" />
+          </AssociationSet>
+          <EntitySet Name="SyncerLogs" EntityType="ESolutions.Shopper.Models.SyncerLog" />
+          <EntitySet Name="Mailings" EntityType="ESolutions.Shopper.Models.Mailing" />
+          <AssociationSet Name="FK_Sales_Mailings" Association="ESolutions.Shopper.Models.FK_Sales_Mailings">
+            <End Role="Mailing" EntitySet="Mailings" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleItems_Articles" Association="ESolutions.Shopper.Models.FK_SaleItems_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="SaleItem" EntitySet="SaleItems" />
+          </AssociationSet>
+          <EntitySet Name="PossibleEANs" EntityType="ESolutions.Shopper.Models.PossibleEAN" />
+          <AssociationSet Name="FK_PossibleEANs_Articles" Association="ESolutions.Shopper.Models.FK_PossibleEANs_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="PossibleEAN" EntitySet="PossibleEANs" />
+          </AssociationSet>
+          <EntitySet Name="Vehicles" EntityType="ESolutions.Shopper.Models.Vehicle" />
+          <EntitySet Name="ArticleVehicleAssignments" EntityType="ESolutions.Shopper.Models.ArticleVehicleAssignment" />
+          <AssociationSet Name="FK_ArticleVehicleAssignments_Articles" Association="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleVehicleAssignment" EntitySet="ArticleVehicleAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleVehicleAssignments_Vehicles" Association="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Vehicles">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="ArticleVehicleAssignment" EntitySet="ArticleVehicleAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_MasterArticles" Association="ESolutions.Shopper.Models.FK_Articles_MasterArticles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Article1" EntitySet="Articles" />
+          </AssociationSet>
+          <EntitySet Name="ArticleSearches" EntityType="ESolutions.Shopper.Models.ArticleSearch" />
+          <AssociationSet Name="FK_ArticleSearch_Articles" Association="ESolutions.Shopper.Models.FK_ArticleSearch_Articles">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleSearch" EntitySet="ArticleSearches" />
+          </AssociationSet>
+          <EntitySet Name="MailingCostCountries" EntityType="ESolutions.Shopper.Models.MailingCostCountry" />
+          <EntitySet Name="Countries" EntityType="ESolutions.Shopper.Models.Country" />
+        </EntityContainer>
+        <EntityType Name="InvoiceItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="ArticleNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaxRate" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="SinglePriceGross" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="StockNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invoice" Relationship="ESolutions.Shopper.Models.FK_InvoiceItems_Invoices" FromRole="InvoiceItem" ToRole="Invoice" />
+        </EntityType>
+        <Association Name="FK_InvoiceItems_Invoices">
+          <End Type="ESolutions.Shopper.Models.Invoice" Role="Invoice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ESolutions.Shopper.Models.InvoiceItem" Role="InvoiceItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InvoiceItem">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="ShippingMethods">
+          <Member Name="Undecided" Value="0" />
+          <Member Name="None" Value="1" />
+          <Member Name="DPD" Value="2" />
+          <Member Name="DHL" Value="3" />
+          <Member Name="DeutschePost" Value="4" />
+        </EnumType>
+        <EnumType Name="SaleSources">
+          <Member Name="Ebay" Value="0" />
+          <Member Name="Magento" Value="1" />
+          <Member Name="Manual" />
+        </EnumType>
+        <EntityType Name="SyncerLog">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Mailing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecepientName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientStreet2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientStreet1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientCountry" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientPostcode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientCity" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientPhone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MailingCostsSender" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="MailingCostsRecepient" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="ShippingMethod" Type="ESolutions.Shopper.Models.ShippingMethods" Nullable="false" />
+          <Property Name="RecepientEbayName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecepientEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MustSyncTrackingNumber" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sales" Relationship="ESolutions.Shopper.Models.FK_Sales_Mailings" FromRole="Mailing" ToRole="Sale" />
+          <Property Name="DateOfShipping" Type="DateTime" Precision="3" />
+          <Property Name="TrackingNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Sales_Mailings">
+          <End Type="ESolutions.Shopper.Models.Mailing" Role="Mailing" Multiplicity="0..1" />
+          <End Type="ESolutions.Shopper.Models.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mailing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="MailingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleItems_Articles">
+          <End Type="ESolutions.Shopper.Models.Article" Role="Article" Multiplicity="0..1" />
+          <End Type="ESolutions.Shopper.Models.SaleItem" Role="SaleItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SaleItem">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PossibleEAN">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="EAN" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleId" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="ESolutions.Shopper.Models.FK_PossibleEANs_Articles" FromRole="PossibleEAN" ToRole="Article" />
+        </EntityType>
+        <Association Name="FK_PossibleEANs_Articles">
+          <End Type="ESolutions.Shopper.Models.Article" Role="Article" Multiplicity="0..1" />
+          <End Type="ESolutions.Shopper.Models.PossibleEAN" Role="PossibleEAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PossibleEAN">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Series" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModelName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ModelNumber" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BuiltFrom" Type="Int32" Nullable="false" />
+          <Property Name="BuiltUntil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArticleVehicleAssignments" Relationship="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Vehicles" FromRole="Vehicle" ToRole="ArticleVehicleAssignment" />
+        </EntityType>
+        <EntityType Name="ArticleVehicleAssignment">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleGuid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Articles" FromRole="ArticleVehicleAssignment" ToRole="Article" />
+          <NavigationProperty Name="Vehicle" Relationship="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Vehicles" FromRole="ArticleVehicleAssignment" ToRole="Vehicle" />
+        </EntityType>
+        <Association Name="FK_ArticleVehicleAssignments_Articles">
+          <End Type="ESolutions.Shopper.Models.Article" Role="Article" Multiplicity="1" />
+          <End Type="ESolutions.Shopper.Models.ArticleVehicleAssignment" Role="ArticleVehicleAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleVehicleAssignment">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleVehicleAssignments_Vehicles">
+          <End Type="ESolutions.Shopper.Models.Vehicle" Role="Vehicle" Multiplicity="1" />
+          <End Type="ESolutions.Shopper.Models.ArticleVehicleAssignment" Role="ArticleVehicleAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="ArticleVehicleAssignment">
+              <PropertyRef Name="VehicleGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articles_MasterArticles">
+          <End Type="ESolutions.Shopper.Models.Article" Role="Article" Multiplicity="0..1" />
+          <End Type="ESolutions.Shopper.Models.Article" Role="Article1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article1">
+              <PropertyRef Name="MasterArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ArticleSearch">
+          <Key>
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Article" Relationship="ESolutions.Shopper.Models.FK_ArticleSearch_Articles" FromRole="ArticleSearch" ToRole="Article" />
+        </EntityType>
+        <Association Name="FK_ArticleSearch_Articles">
+          <End Type="ESolutions.Shopper.Models.Article" Role="Article" Multiplicity="1" />
+          <End Type="ESolutions.Shopper.Models.ArticleSearch" Role="ArticleSearch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleSearch">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="DhlZones">
+          <Member Name="Germany" Value="0" />
+          <Member Name="Euro" Value="1" />
+          <Member Name="World" Value="2" />
+        </EnumType>
+        <EntityType Name="MailingCostCountry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsoCode2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DpdCostsUnto4kg" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="DpdCostsUnto31_5kg" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="HideNetPrices" Type="Boolean" Nullable="false" />
+          <Property Name="DhlProductCode" Type="ESolutions.Shopper.Models.DhlZones" Nullable="false" />
+          <Property Name="DhlCosts" Type="Decimal" Nullable="false" Precision="25" Scale="9" />
+          <Property Name="IsoCode3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsoCodeAlpha2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsoCodeAlpha3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumericCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsoCode31662" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ESolutionsShopperModelsStoreContainer" CdmEntityContainer="MyDataContext">
+          <EntitySetMapping Name="ArticleQAs">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.ArticleQA">
+              <MappingFragment StoreEntitySet="ArticleQAs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Article">
+              <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="MasterArticleId" ColumnName="MasterArticleId" />
+                <ScalarProperty Name="EbayArticleNumber" ColumnName="EbayArticleNumber" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaterialGroupsId" ColumnName="MaterialGroupsId" />
+                <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
+                <ScalarProperty Name="NameIntern" ColumnName="NameIntern" />
+                <ScalarProperty Name="NameGerman" ColumnName="NameGerman" />
+                <ScalarProperty Name="NameEnglish" ColumnName="NameEnglish" />
+                <ScalarProperty Name="DescriptionGerman" ColumnName="DescriptionGerman" />
+                <ScalarProperty Name="DescriptionEnglish" ColumnName="DescriptionEnglish" />
+                <ScalarProperty Name="PictureName1" ColumnName="PictureName1" />
+                <ScalarProperty Name="PictureName2" ColumnName="PictureName2" />
+                <ScalarProperty Name="PictureName3" ColumnName="PictureName3" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="SellingPriceWholesaleGross" ColumnName="SellingPriceWholesaleGross" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierArticleNumber" ColumnName="SupplierArticleNumber" />
+                <ScalarProperty Name="SellingPriceGross" ColumnName="SellingPriceGross" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="MustSyncStockAmount" ColumnName="MustSyncStockAmount" />
+                <ScalarProperty Name="SyncDate" ColumnName="SyncDate" />
+                <ScalarProperty Name="SyncTotal" ColumnName="SyncTotal" />
+                <ScalarProperty Name="SyncEbayAvailiable" ColumnName="SyncEbayAvailiable" />
+                <ScalarProperty Name="SyncEbayActive" ColumnName="SyncEbayActive" />
+                <ScalarProperty Name="SyncEbayTemplate" ColumnName="SyncEbayTemplate" />
+                <ScalarProperty Name="SyncMagento" ColumnName="SyncMagento" />
+                <ScalarProperty Name="SyncTechnicalInfo" ColumnName="SyncTechnicalInfo" />
+                <ScalarProperty Name="IsInEbay" ColumnName="IsInEbay" />
+                <ScalarProperty Name="IsInMagento" ColumnName="IsInMagento" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="Picture1Guid" ColumnName="Picture1Guid" />
+                <ScalarProperty Name="Picture2Guid" ColumnName="Picture2Guid" />
+                <ScalarProperty Name="Picture3Guid" ColumnName="Picture3Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GermanPostcodes">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.GermanPostcode">
+              <MappingFragment StoreEntitySet="GermanPostcodes">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Addition" ColumnName="Addition" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Invoice">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="InvoiceName" ColumnName="InvoiceName" />
+                <ScalarProperty Name="InvoiceStreet2" ColumnName="InvoiceStreet2" />
+                <ScalarProperty Name="InvoiceStreet1" ColumnName="InvoiceStreet1" />
+                <ScalarProperty Name="InvoiceCountry" ColumnName="InvoiceCountry" />
+                <ScalarProperty Name="InvoicePostcode" ColumnName="InvoicePostcode" />
+                <ScalarProperty Name="InvoiceCity" ColumnName="InvoiceCity" />
+                <ScalarProperty Name="InvoicePhone" ColumnName="InvoicePhone" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="Printed" ColumnName="Printed" />
+                <ScalarProperty Name="MailingCosts" ColumnName="MailingCosts" />
+                <ScalarProperty Name="MailingCostsTaxRate" ColumnName="MailingCostsTaxRate" />
+                <ScalarProperty Name="UstIdNr" ColumnName="UstIdNr" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="HideNetPrices" ColumnName="HideNetPrices" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailingCostsDpds">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.MailingCostsDpd">
+              <MappingFragment StoreEntitySet="MailingCostsDpd">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AdditionalCosts" ColumnName="AdditionalCosts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialGroups">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.MaterialGroup">
+              <MappingFragment StoreEntitySet="MaterialGroups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EbayAuctionHtmlTemplate" ColumnName="EbayAuctionHtmlTemplate" />
+                <ScalarProperty Name="IntroductionGerman" ColumnName="IntroductionGerman" />
+                <ScalarProperty Name="IntroductionEnglish" ColumnName="IntroductionEnglish" />
+                <ScalarProperty Name="DescriptionGerman" ColumnName="DescriptionGerman" />
+                <ScalarProperty Name="DescriptionEnglish" ColumnName="DescriptionEnglish" />
+                <ScalarProperty Name="AdditionalDescriptionGerman" ColumnName="AdditionalDescriptionGerman" />
+                <ScalarProperty Name="AdditionalDescriptionEnglish" ColumnName="AdditionalDescriptionEnglish" />
+                <ScalarProperty Name="MagentoCategoryId" ColumnName="MagentoCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NumberGenerators">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.NumberGenerator">
+              <MappingFragment StoreEntitySet="NumberGenerators">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrentNumber" ColumnName="CurrentNumber" />
+                <ScalarProperty Name="StepWidth" ColumnName="StepWidth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ExpectedDateOfDelivery" ColumnName="ExpectedDateOfDelivery" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="FixCostsPercentage" ColumnName="FixCostsPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleItems">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.SaleItem">
+              <MappingFragment StoreEntitySet="SaleItems">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="EbaySalesRecordNumber" ColumnName="EbaySalesRecordNumber" />
+                <ScalarProperty Name="ExternalArticleName" ColumnName="ExternalArticleName" />
+                <ScalarProperty Name="ExternalArticleNumber" ColumnName="ExternalArticleNumber" />
+                <ScalarProperty Name="InternalArticleNumber" ColumnName="InternalArticleNumber" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SinglePriceGross" ColumnName="SinglePriceGross" />
+                <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="EbayOrderLineItemID" ColumnName="EbayOrderLineItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="PaidWithPayPal" ColumnName="PaidWithPayPal" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MailingId" ColumnName="MailingId" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="EbayName" ColumnName="EbayName" />
+                <ScalarProperty Name="InvoiceName" ColumnName="InvoiceName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EMailAddress" ColumnName="EMailAddress" />
+                <ScalarProperty Name="InvoiceStreet1" ColumnName="InvoiceStreet1" />
+                <ScalarProperty Name="InvoiceStreet2" ColumnName="InvoiceStreet2" />
+                <ScalarProperty Name="InvoiceCity" ColumnName="InvoiceCity" />
+                <ScalarProperty Name="InvoiceRegion" ColumnName="InvoiceRegion" />
+                <ScalarProperty Name="InvoicePostcode" ColumnName="InvoicePostcode" />
+                <ScalarProperty Name="InvoiceCountry" ColumnName="InvoiceCountry" />
+                <ScalarProperty Name="DateOfPayment" ColumnName="DateOfPayment" />
+                <ScalarProperty Name="DateOfSale" ColumnName="DateOfSale" />
+                <ScalarProperty Name="ShippingPrice" ColumnName="ShippingPrice" />
+                <ScalarProperty Name="Canceled" ColumnName="Canceled" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ShippingName" ColumnName="ShippingName" />
+                <ScalarProperty Name="ShippingStreet1" ColumnName="ShippingStreet1" />
+                <ScalarProperty Name="ShippingStreet2" ColumnName="ShippingStreet2" />
+                <ScalarProperty Name="ShippingCity" ColumnName="ShippingCity" />
+                <ScalarProperty Name="ShippingRegion" ColumnName="ShippingRegion" />
+                <ScalarProperty Name="ShippingPostcode" ColumnName="ShippingPostcode" />
+                <ScalarProperty Name="ShippingCountry" ColumnName="ShippingCountry" />
+                <ScalarProperty Name="NameOfBuyer" ColumnName="NameOfBuyer" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="IsCashSale" ColumnName="IsCashSale" />
+                <ScalarProperty Name="ManuallyChanged" ColumnName="ManuallyChanged" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockMovements">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.StockMovement">
+              <MappingFragment StoreEntitySet="StockMovements">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Supplier">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceItems">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.InvoiceItem">
+              <MappingFragment StoreEntitySet="InvoiceItems">
+                <ScalarProperty Name="StockNumber" ColumnName="StockNumber" />
+                <ScalarProperty Name="SinglePriceGross" ColumnName="SinglePriceGross" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="ArticleName" ColumnName="ArticleName" />
+                <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SyncerLogs">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.SyncerLog">
+              <MappingFragment StoreEntitySet="SyncerLog">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mailings">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Mailing">
+              <MappingFragment StoreEntitySet="Mailings">
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="DateOfShipping" ColumnName="DateOfShipping" />
+                <ScalarProperty Name="MustSyncTrackingNumber" ColumnName="MustSyncTrackingNumber" />
+                <ScalarProperty Name="RecepientEmail" ColumnName="RecepientEmail" />
+                <ScalarProperty Name="RecepientEbayName" ColumnName="RecepientEbayName" />
+                <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
+                <ScalarProperty Name="MailingCostsRecepient" ColumnName="MailingCostsRecepient" />
+                <ScalarProperty Name="MailingCostsSender" ColumnName="MailingCostsSender" />
+                <ScalarProperty Name="RecepientPhone" ColumnName="RecepientPhone" />
+                <ScalarProperty Name="RecepientCity" ColumnName="RecepientCity" />
+                <ScalarProperty Name="RecepientPostcode" ColumnName="RecepientPostcode" />
+                <ScalarProperty Name="RecepientCountry" ColumnName="RecepientCountry" />
+                <ScalarProperty Name="RecepientStreet1" ColumnName="RecepientStreet1" />
+                <ScalarProperty Name="RecepientStreet2" ColumnName="RecepientStreet2" />
+                <ScalarProperty Name="RecepientName" ColumnName="RecepientName" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PossibleEANs">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.PossibleEAN">
+              <MappingFragment StoreEntitySet="PossibleEANs">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="BuiltUntil" ColumnName="BuiltUntil" />
+                <ScalarProperty Name="BuiltFrom" ColumnName="BuiltFrom" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleVehicleAssignments">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.ArticleVehicleAssignment">
+              <MappingFragment StoreEntitySet="ArticleVehicleAssignments">
+                <ScalarProperty Name="VehicleGuid" ColumnName="VehicleGuid" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleSearches">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.ArticleSearch">
+              <MappingFragment StoreEntitySet="ArticleSearch">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailingCostCountries">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.MailingCostCountry">
+              <MappingFragment StoreEntitySet="MailingCostCountries">
+                <ScalarProperty Name="IsoCode3" ColumnName="IsoCode3" />
+                <ScalarProperty Name="DhlCosts" ColumnName="DhlCosts" />
+                <ScalarProperty Name="DhlProductCode" ColumnName="DhlProductCode" />
+                <ScalarProperty Name="HideNetPrices" ColumnName="HideNetPrices" />
+                <ScalarProperty Name="DpdCostsUnto31_5kg" ColumnName="DpdCostsUnto31_5kg" />
+                <ScalarProperty Name="DpdCostsUnto4kg" ColumnName="DpdCostsUnto4kg" />
+                <ScalarProperty Name="IsoCode2" ColumnName="IsoCode2" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ESolutions.Shopper.Models.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="IsoCode31662" ColumnName="IsoCode31662" />
+                <ScalarProperty Name="NumericCode" ColumnName="NumericCode" />
+                <ScalarProperty Name="IsoCodeAlpha3" ColumnName="IsoCodeAlpha3" />
+                <ScalarProperty Name="IsoCodeAlpha2" ColumnName="IsoCodeAlpha2" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

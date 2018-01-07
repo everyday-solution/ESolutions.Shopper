@@ -1,0 +1,198 @@
+﻿/* Article Inventory */
+#inventory {
+	font-size: 8pt;
+	font-family: Arial;
+}
+
+	#inventory .numbers {
+		text-align: right;
+		width: 2cm;
+	}
+
+/* Article Inventory */
+#shipping_label {
+	font-family: Arial;
+}
+
+	#shipping_label #sender {
+		position: absolute;
+		top: 19mm;
+		left: 7.5mm;
+		font-size: 8pt;
+	}
+
+		#shipping_label #sender .title {
+			text-decoration: underline;
+			margin-bottom: 2mm;
+		}
+
+		#shipping_label #sender .line {
+			margin-bottom: 1mm;
+		}
+
+	#shipping_label #recepient {
+		position: absolute;
+		font-weight: bold;
+		font-size: 12pt;
+		top: 38mm;
+		left: 58mm;
+	}
+
+		#shipping_label #recepient .line {
+			height: 7mm;
+			width: 80mm;
+			overflow: hidden;
+		}
+
+/* Invoice */
+#invoice {
+	font-family: Arial;
+	font-size: 10pt;
+	width: 210mm;
+	height: 297mm;
+	page-break-after: always;
+	padding: 2cm;
+}
+
+	/* HEAD */
+	#invoice #head {
+		margin: 0px;
+		padding: 0px;
+		padding-top: 10mm;
+		text-align: left;
+	}
+
+		#invoice #head #row1 #logo {
+			float: left;
+		}
+
+			#invoice #head #row1 #logo img {
+				height: 30mm;
+			}
+
+		#invoice #head #row1 #firm {
+			float: left;
+			margin-left: 5mm;
+		}
+
+		#invoice #head #row1 #contact {
+			float: left;
+			margin-left: 5mm;
+		}
+
+		#invoice #head #row2 {
+			margin-top: 5mm;
+		}
+
+			#invoice #head #row2 #recepient {
+				float: left;
+			}
+
+				#invoice #head #row2 #recepient #sender {
+					font-size: 8pt;
+					text-decoration: underline;
+					margin-bottom: 3mm;
+				}
+
+			#invoice #head #row2 #data {
+				float: right;
+			}
+
+				#invoice #head #row2 #data td {
+					padding: 0.5mm;
+					border: solid 1px black;
+				}
+
+				#invoice #head #row2 #data .caption {
+					background-color: #e9e9e9;
+					font-weight: bold;
+				}
+
+		#invoice #head #row3 {
+			float: left;
+			width: 75%;
+		}
+
+	/* BODY */
+	#invoice #body {
+		height: 200mm;
+		text-align: left;
+		padding: 0mm;
+		margin: 0mm;
+	}
+
+		#invoice #body #table {
+			width: 100%;
+			font-size: 8pt;
+			border: solid 1px black;
+		}
+
+			#invoice #body #table thead th {
+				background-color: #e9e9e9;
+				height: 7mm;
+				border-bottom: solid 1px black;
+			}
+
+			#invoice #body #table .numbercolumn {
+				text-align: right;
+			}
+
+			#invoice #body #table tbody td {
+				padding: 2mm;
+				height: 6mm;
+			}
+
+			#invoice #body #table tfoot th {
+				text-align: left;
+				padding: 2mm;
+				border-top: solid 1px black;
+			}
+
+				#invoice #body #table tfoot th.gray {
+					background-color: #e9e9e9;
+				}
+
+	/* FOOT */
+	#invoice #foot {
+		height: 40mm;
+		text-align: left;
+		font-size: 8pt;
+	}
+
+		#invoice #foot .column {
+			text-align: right;
+			float: left;
+			padding-left: 10mm;
+		}
+
+		#invoice #foot #tax {
+			float: left;
+			margin-left: 5mm;
+		}
+
+		#invoice #foot .bank {
+			float: left;
+			margin-left: 5mm;
+		}
+
+		#invoice #foot #terms {
+			margin-top: 3mm;
+			text-align: center;
+		}
+
+#picking_print {
+	padding: 1.5cm;
+}
+
+	#picking_print h1 {
+		font-size: 16pt;
+		font-weight: bold;
+	}
+
+	#picking_print td {
+		padding: 2mm;
+	}
+
+	#picking_print .divider {
+		border-top: solid 1px black;
+	}

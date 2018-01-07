@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="954c021c1a2d4e33b5f8e984e376b5ac" Name="Diagram1" ZoomLevel="68">
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.ArticleQA" Width="1.5" PointX="5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Article" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.GermanPostcode" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Invoice" Width="1.5" PointX="12.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.MailingCostsDpd" Width="1.875" PointX="13.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.MaterialGroup" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.NumberGenerator" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Order" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.SaleItem" Width="1.5" PointX="7.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Sale" Width="1.5" PointX="9.875" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.StockMovement" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Supplier" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_ArticleQAs_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Articles_MaterialGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Articles_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Orders_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_StockMovements_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Sales_Invoices" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Orders_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_SaleItem_Sales" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.InvoiceItem" Width="1.5" PointX="14.375" PointY="9.25" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_InvoiceItems_Invoices" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.SyncerLog" Width="1.5" PointX="11.625" PointY="1.25" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Mailing" Width="2.125" PointX="12.5" PointY="4.25" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Sales_Mailings" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_SaleItems_Articles" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.PossibleEAN" Width="1.5" PointX="5.25" PointY="6.75" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_PossibleEANs_Articles" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Vehicle" Width="1.5" PointX="5.25" PointY="14" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.ArticleVehicleAssignment" Width="1.5" PointX="2.875" PointY="14.125" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Articles" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_ArticleVehicleAssignments_Vehicles" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_Articles_MasterArticles" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.ArticleSearch" Width="1.5" PointX="0.625" PointY="11.625" />
+        <AssociationConnector Association="ESolutions.Shopper.Models.FK_ArticleSearch_Articles" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.MailingCostCountry" Width="1.5" PointX="7.75" PointY="0.625" />
+        <EntityTypeShape EntityType="ESolutions.Shopper.Models.Country" Width="1.5" PointX="7.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

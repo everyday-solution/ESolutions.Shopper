@@ -1,0 +1,129 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ESolutions.Shopper.Web.UI.SiteMaster" %>
+
+<%@ Register Assembly="ESolutions.Web" Namespace="ESolutions.Web.UI" TagPrefix="es" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	<title>
+		<asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+	</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+	<es:FileLinkControl ID="FileLinkControl1" runat="server" File="~/Styles/Site.css" />
+	<es:FileLinkControl ID="FileLinkControl2" runat="server" File="~/Styles/Sorter/theme.default.css" />
+	<es:FileLinkControl ID="FileLinkControl3" runat="server" File="~/Styles/jquery-ui.min.css" />
+	<es:FileLinkControl ID="FileLinkControl14" runat="server" File="~/Styles/select2.min.css" />
+	<es:FileLinkControl ID="FileLinkControl4" runat="server" File="~/Scripts/jquery-3.1.1.min.js" />
+	<es:FileLinkControl ID="FileLinkControl5" runat="server" File="~/Scripts/jquery-ui.min.js" />
+	<es:FileLinkControl ID="FileLinkControl6" runat="server" File="~/Scripts/jquery.tablesorter.min.js" />
+	<es:FileLinkControl ID="FileLinkControl7" runat="server" File="~/Scripts/jquery.tablesorter.widgets.min.js" />
+	<es:FileLinkControl ID="FileLinkControl9" runat="server" File="~/Scripts/jquery.watermark.js" />
+	<es:FileLinkControl ID="FileLinkControl10" runat="server" File="~/Scripts/jquery.floatThead._.js" />
+	<es:FileLinkControl ID="FileLinkControl12" runat="server" File="~/Scripts/jquery.floatThead.js" />
+	<es:FileLinkControl ID="FileLinkControl13" runat="server" File="~/Scripts/select2.min.js" />
+	<es:FileLinkControl ID="FileLinkControl11" runat="server" File="~/Styles/favicon.ico" />
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
+	<script type="text/javascript">
+		$.tablesorter.addParser({
+			// set a unique id 
+			id: 'euro_currency',
+			is: function (s) {
+				return /^[£$€?.]/.test(s);
+			},
+			format: function (s) {
+				s = s.replace('.', '');
+				return $.tablesorter.formatFloat(s.replace(new RegExp(/[^0-9.]/g), ""));
+			},
+			type: "numeric"
+		});
+
+		$.tablesorter.addParser({
+			id: 'germandate',
+			is: function (s) {
+				return false;
+			},
+			format: function (s) {
+				var a = s.split('.');
+				a[1] = a[1].replace(/^[0]+/g, "");
+				return new Date(a.reverse().join("/")).getTime();
+			},
+			type: 'numeric'
+		});
+
+		$(document).ready(function () {
+			//$('#main_menu').menu();
+		});
+	</script>
+	<asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="The description of my page" />
+</head>
+<body>
+	<form id="form1" runat="server">
+		<div>
+			<asp:Image ID="site_logo" ClientIDMode="Static" runat="server" ImageUrl="~/Styles/logo.png" />
+			<span id="site_title">Happy Shopper</span>
+		</div>
+		<nav>
+			<ul>
+				<li>
+					<asp:HyperLink runat="server" ID="HomeLink" Text="Home" />
+				</li>
+				<li><a href="#">Basedata &#x25BC;</a>
+					<ul>
+						<li>
+							<asp:HyperLink runat="server" ID="SuppliersLink" Text="Supplier" />
+						</li>
+						<li>
+							<asp:HyperLink runat="server" ID="MaterialGroupsLink" Text="Material Groups" />
+						</li>
+						<li>
+							<asp:HyperLink runat="server" ID="MailingCostsLink" Text="Shipping Costs" />
+						</li>
+						<li>
+							<asp:HyperLink runat="server" ID="MailingCostsDpdLink" Text="Shipping Costs (Surcharge)" />
+						</li>
+						<li>
+							<asp:HyperLink runat="server" ID="VehiclesLink" Text="Vehicles" />
+						</li>
+						<li>
+							<asp:HyperLink runat="server" ID="SyncerLogLink" Text="Sync-Log" />
+						</li>
+					</ul>
+				</li>
+				<li>
+					<asp:HyperLink runat="server" ID="ArticlesLink" Text="Articles" />
+				</li>
+				<li>
+					<asp:HyperLink runat="server" ID="OrdersLink" Text="Orders" />
+				</li>
+				<li>
+					<asp:HyperLink runat="server" ID="SalesLink" Text="Sales" />
+				</li>
+				<li>
+					<asp:HyperLink runat="server" ID="MailingsLink" Text="Mailings" />
+				</li>
+				<li>
+					<asp:HyperLink runat="server" ID="InvoicesLink" Text="Invoices" />
+				</li>
+			</ul>
+		</nav>
+		<asp:Panel runat="server" ID="MessagePanel" Visible="false" CssClass="error_panel">
+			<p>
+				<asp:Label runat="server" ID="MessageLabel" />
+			</p>
+			<p>
+				<asp:Label runat="server" ID="MessageDetailLabel" />
+			</p>
+		</asp:Panel>
+		<div id="content">
+			<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+		</div>
+		<div id="site_footer">
+			goto: 
+			<a href="<%=ESolutions.Shopper.Models.ShopperConfiguration.Default.Magento.ShopRootUrl.ToString() %>index.php/admin/dashboard">Magento</a>
+			<a href="https://signin.ebay.de/ws/eBayISAPI.dll">ebay</a>
+		</div>
+	</form>
+	<%= StackExchange.Profiling.MiniProfiler.RenderIncludes() %>
+</body>
+</html>

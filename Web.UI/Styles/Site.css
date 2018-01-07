@@ -1,0 +1,280 @@
+﻿body {
+	background-color: #000000;
+	font-size: .75em;
+	font-family: Verdana, Helvetica, Sans-Serif;
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+img.thumbnail {
+	max-height: 100px;
+	max-width: 100px;
+}
+
+table {
+	border: solid 1px #e8eef4;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+}
+
+	th.number, td.number {
+		text-align: right;
+	}
+
+a:link, .button {
+	color: #FFA500;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+a:visited {
+	color: #FFA500;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #D96708;
+	text-decoration: underline;
+}
+
+.multi-column {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 40px;
+}
+
+.field_with_label {
+	margin-bottom: 10px;
+	min-height: 45px;
+	max-width: 300px;
+}
+
+label {
+	color: gray;
+	display: block;
+}
+
+input[type=text], input[type=textbox], select, textarea {
+	width: 300px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	vertical-align: top;
+	padding: 5px;
+}
+
+.article_preview {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+#submenu a {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#filter input, #filter select {
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	height: 30px;
+	vertical-align: top;
+	width: auto;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+#commands {
+	margin-top: 10px;
+	vertical-align: middle;
+	line-height: 30px;
+}
+
+	#commands input, #commands select {
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		height: 30px;
+		vertical-align: top;
+		width: auto;
+		padding: 5px;
+	}
+
+/*----------------------------------------------------------
+	Site.Master
+----------------------------------------------------------*/
+#site_logo {
+	height: 60px;
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+#site_title {
+	font-family: 'Pacifico', cursive;
+	font-size: 36px;
+	color: #FFA500;
+	vertical-align: top;
+	line-height: 60px;
+	margin-left: 20px;
+}
+
+nav {
+	border-top: solid 1px #D96708;
+	background: #343435;
+	margin: 0;
+}
+
+	nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: relative;
+		display: inline-table;
+		background: #343435;
+	}
+
+		nav ul:after {
+			content: "";
+			clear: both;
+			display: block;
+		}
+
+		nav ul ul {
+			display: none;
+		}
+
+		nav ul li:hover > ul {
+			display: block;
+		}
+
+		nav ul ul {
+			border-radius: 0px;
+			padding: 0;
+			position: absolute;
+			top: 100%;
+		}
+
+	nav > ul > li {
+		display: inline-block;
+	}
+
+	nav > ul ul {
+		border-top: solid 1px #D96708;
+		z-index: 999999;
+	}
+
+	nav li {
+		padding: 15px;
+		margin-right: 10px;
+	}
+
+		nav li a {
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+.error_panel {
+	background-color: White;
+	padding: 10px;
+}
+
+#content {
+	background-color: White;
+	padding: 15px;
+}
+
+#site_footer {
+	background-color: #343435;
+	padding: 15px;
+	color: white;
+}
+
+/*----------------------------------------------------------
+	~/Sales/Export.aspx
+----------------------------------------------------------*/
+#export .search {
+	width: 200px;
+}
+
+/*----------------------------------------------------------
+	~/Articles/Performance.aspx
+----------------------------------------------------------*/
+.bgRed {
+	background-image: url('bg.gif');
+}
+
+
+/*----------------------------------------------------------
+	~/Articles/Hits.aspx
+----------------------------------------------------------*/
+#article_hit_list td.image_cell {
+	text-align: center;
+}
+
+/*----------------------------------------------------------
+	~/Articles/Edit.aspx
+----------------------------------------------------------*/
+#article_base_data input, #article_base_data select {
+	width: 99%;
+}
+
+/*----------------------------------------------------------
+	~/Mailings/Default.aspx
+----------------------------------------------------------*/
+.modal-backdrop {
+	background-color: rgba(0, 0, 0, 0.61);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}
+
+.modal {
+	width: 500px;
+	position: absolute;
+	top: 25%;
+	z-index: 1020;
+	background-color: #FFF;
+	border-radius: 6px;
+	display: none;
+}
+
+.modal-header {
+	background-color: #333;
+	color: #FFF;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+	.modal-header h3 {
+		margin: 0;
+		padding: 0 10px 0 10px;
+		line-height: 40px;
+	}
+
+		.modal-header h3 .close-modal {
+			float: right;
+			text-decoration: none;
+			color: #FFF;
+		}
+
+.modal-footer {
+	background-color: #F1F1F1;
+	padding: 0 10px 0 10px;
+	line-height: 40px;
+	text-align: right;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top: solid 1px #CCC;
+}
+
+.modal-body {
+	padding: 0 10px 0 10px;
+}
